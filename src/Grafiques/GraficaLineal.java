@@ -1,9 +1,7 @@
 package Grafiques;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -15,7 +13,6 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.RefineryUtilities;
 
 /**
  * BUG: si vols q ixquen 2 linees en la mateixa grafica, les segons valors de
@@ -31,6 +28,9 @@ public class GraficaLineal extends JPanel {
     public GraficaLineal() {
         super();
         dataset = new DefaultCategoryDataset();
+        
+        createChart("", "", "", "");
+        setVisible(true);
     }
 
     public GraficaLineal(Number valor[], String nomGrup[], String nomPunt[],
@@ -88,7 +88,6 @@ public class GraficaLineal extends JPanel {
             chart.addSubtitle(new TextTitle(subtitol));
         }
 
-
         // customise the range axis...
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
@@ -104,7 +103,7 @@ public class GraficaLineal extends JPanel {
         //AFEGIM LA GRAFICA AL PANEL
         this.setLayout(new BorderLayout());
         chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(this.getSize());
+        chartPanel.setSize(this.getSize());
         this.add(chartPanel, BorderLayout.CENTER);
     }
     /*

@@ -384,6 +384,11 @@ public class Principal extends javax.swing.JFrame {
         verEstadistica.add(verEstadisticaHistorica);
 
         verEstadisticaParciales.setText("Parciales");
+        verEstadisticaParciales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verEstadisticaParcialesActionPerformed(evt);
+            }
+        });
         verEstadistica.add(verEstadisticaParciales);
 
         menuVer.add(verEstadistica);
@@ -470,6 +475,10 @@ public class Principal extends javax.swing.JFrame {
     private void cronoAñadirTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cronoAñadirTiempoActionPerformed
         centre.addTab("Cronómetro", new AddTempsCrono(club));
     }//GEN-LAST:event_cronoAñadirTiempoActionPerformed
+
+    private void verEstadisticaParcialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verEstadisticaParcialesActionPerformed
+        centre.addTab("Estadisticas", new EstadistiquesParcials(club));
+    }//GEN-LAST:event_verEstadisticaParcialesActionPerformed
 
     protected void addPestanya(String titol, Component comp){
         centre.addTab(titol, comp);
