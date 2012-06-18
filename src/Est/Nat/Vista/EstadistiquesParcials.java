@@ -1,6 +1,8 @@
 package Est.Nat.Vista;
 
 import Est.Nat.Dades.Club;
+import Utilitats.CognomPredictiu;
+import Utilitats.NomPredictiu;
 
 /**
  *
@@ -32,8 +34,8 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         tarta = new Grafiques.GraficaQuesito();
         toolBar = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
-        nomPredictiu1 = new Utilitats.NomPredictiu();
-        jTextField2 = new javax.swing.JTextField();
+        nomPredictiu = new NomPredictiu(club);
+        cognomPredictiu = new CognomPredictiu(club,nomPredictiu);
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -113,13 +115,12 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         jLabel1.setText("Nadador:");
         toolBar.add(jLabel1);
 
-        nomPredictiu1.setMaximumSize(new java.awt.Dimension(100, 20));
-        nomPredictiu1.setMinimumSize(new java.awt.Dimension(70, 20));
-        toolBar.add(nomPredictiu1);
+        nomPredictiu.setMaximumSize(new java.awt.Dimension(100, 20));
+        nomPredictiu.setMinimumSize(new java.awt.Dimension(70, 20));
+        toolBar.add(nomPredictiu);
 
-        jTextField2.setText("apellidos");
-        jTextField2.setMaximumSize(new java.awt.Dimension(150, 20));
-        toolBar.add(jTextField2);
+        cognomPredictiu.setMaximumSize(new java.awt.Dimension(125, 20));
+        toolBar.add(cognomPredictiu);
         toolBar.add(jSeparator1);
 
         jLabel2.setText("Prueba:");
@@ -154,14 +155,14 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Grafiques.GraficaTempsLineal acceleracio;
+    private Utilitats.CognomPredictiu cognomPredictiu;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JTextField jTextField2;
-    private Utilitats.NomPredictiu nomPredictiu1;
+    private Utilitats.NomPredictiu nomPredictiu;
     private javax.swing.JSplitPane spaneContenedor;
     private javax.swing.JSplitPane spaneDreta;
     private javax.swing.JSplitPane spaneEsquerra;

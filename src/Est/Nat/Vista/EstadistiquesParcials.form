@@ -166,7 +166,7 @@
             <Property name="text" type="java.lang.String" value="Nadador:"/>
           </Properties>
         </Component>
-        <Component class="Utilitats.NomPredictiu" name="nomPredictiu1">
+        <Component class="Utilitats.NomPredictiu" name="nomPredictiu">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 20]"/>
@@ -176,17 +176,20 @@
             </Property>
           </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new NomPredictiu(club)"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="EstadistiquesParcials_nomPredictiu1"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="Utilitats.CognomPredictiu" name="cognomPredictiu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="apellidos"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 20]"/>
+              <Dimension value="[125, 20]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new CognomPredictiu(club,nomPredictiu)"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator1">
         </Component>
