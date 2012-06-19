@@ -1,2 +1,0 @@
-Utilitats.JTabbedPanePersonalized
-Utilitats.CloseTabIcon
