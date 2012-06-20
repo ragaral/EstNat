@@ -3,6 +3,8 @@ package Est.Nat.Vista;
 import Est.Nat.Dades.Club;
 import Utilitats.CognomPredictiu;
 import Utilitats.NomPredictiu;
+import calendari.Calendari;
+import javax.swing.JDialog;
 
 /**
  *
@@ -38,14 +40,14 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         cognomPredictiu = new CognomPredictiu(club,nomPredictiu);
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
+        comboMetres = new javax.swing.JComboBox();
+        comboEstil = new javax.swing.JComboBox();
+        fieldData = new javax.swing.JTextField();
 
-        spaneContenedor.setDividerLocation(340);
+        spaneContenedor.setDividerLocation(350);
         spaneContenedor.setResizeWeight(0.5);
 
-        spaneEsquerra.setDividerLocation(220);
+        spaneEsquerra.setDividerLocation(230);
         spaneEsquerra.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         spaneEsquerra.setResizeWeight(0.5);
 
@@ -53,11 +55,11 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         tempsParcials.setLayout(tempsParcialsLayout);
         tempsParcialsLayout.setHorizontalGroup(
             tempsParcialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 337, Short.MAX_VALUE)
+            .addGap(0, 347, Short.MAX_VALUE)
         );
         tempsParcialsLayout.setVerticalGroup(
             tempsParcialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 219, Short.MAX_VALUE)
+            .addGap(0, 229, Short.MAX_VALUE)
         );
 
         spaneEsquerra.setTopComponent(tempsParcials);
@@ -66,18 +68,18 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         acceleracio.setLayout(acceleracioLayout);
         acceleracioLayout.setHorizontalGroup(
             acceleracioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 337, Short.MAX_VALUE)
+            .addGap(0, 347, Short.MAX_VALUE)
         );
         acceleracioLayout.setVerticalGroup(
             acceleracioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 247, Short.MAX_VALUE)
+            .addGap(0, 237, Short.MAX_VALUE)
         );
 
         spaneEsquerra.setRightComponent(acceleracio);
 
         spaneContenedor.setLeftComponent(spaneEsquerra);
 
-        spaneDreta.setDividerLocation(220);
+        spaneDreta.setDividerLocation(230);
         spaneDreta.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         spaneDreta.setResizeWeight(0.5);
 
@@ -85,11 +87,11 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         velocitat.setLayout(velocitatLayout);
         velocitatLayout.setHorizontalGroup(
             velocitatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGap(0, 344, Short.MAX_VALUE)
         );
         velocitatLayout.setVerticalGroup(
             velocitatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 219, Short.MAX_VALUE)
+            .addGap(0, 229, Short.MAX_VALUE)
         );
 
         spaneDreta.setTopComponent(velocitat);
@@ -98,11 +100,11 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         tarta.setLayout(tartaLayout);
         tartaLayout.setHorizontalGroup(
             tartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGap(0, 344, Short.MAX_VALUE)
         );
         tartaLayout.setVerticalGroup(
             tartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 247, Short.MAX_VALUE)
+            .addGap(0, 237, Short.MAX_VALUE)
         );
 
         spaneDreta.setRightComponent(tarta);
@@ -126,17 +128,22 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         jLabel2.setText("Prueba:");
         toolBar.add(jLabel2);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50" }));
-        jComboBox1.setMaximumSize(new java.awt.Dimension(50, 20));
-        toolBar.add(jComboBox1);
+        comboMetres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "200", "400", "800", "1500" }));
+        comboMetres.setMaximumSize(new java.awt.Dimension(50, 20));
+        toolBar.add(comboMetres);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Espalda" }));
-        jComboBox2.setMaximumSize(new java.awt.Dimension(70, 20));
-        toolBar.add(jComboBox2);
+        comboEstil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Espalda", "Braza", "Mariposa", "Libres", "Estilos" }));
+        comboEstil.setMaximumSize(new java.awt.Dimension(70, 20));
+        toolBar.add(comboEstil);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "fecha" }));
-        jComboBox3.setMaximumSize(new java.awt.Dimension(70, 20));
-        toolBar.add(jComboBox3);
+        fieldData.setText("dd/mm/aaaa");
+        fieldData.setMaximumSize(new java.awt.Dimension(90, 20));
+        fieldData.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldDataFocusGained(evt);
+            }
+        });
+        toolBar.add(fieldData);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,12 +160,27 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
                 .addComponent(spaneContenedor))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldDataFocusGained
+        this.requestFocus();
+        
+        calendari.Calendari calendari = new Calendari();
+        JDialog dialogCalendari = new JDialog();
+        dialogCalendari.setModal(true);
+        dialogCalendari.add(calendari);
+        dialogCalendari.setSize(300, 200);
+        dialogCalendari.setLocationRelativeTo(null);
+        
+        dialogCalendari.setVisible(true);
+        fieldData.setText(calendari.toString());
+    }//GEN-LAST:event_fieldDataFocusGained
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Grafiques.GraficaTempsLineal acceleracio;
     private Utilitats.CognomPredictiu cognomPredictiu;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox comboEstil;
+    private javax.swing.JComboBox comboMetres;
+    private javax.swing.JTextField fieldData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar.Separator jSeparator1;

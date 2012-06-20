@@ -57,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
         escut = new javax.swing.JLabel();
         dretaBaix = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        calendari = new calendari.Vista();
+        calendariNotes = new CalendariNotes.Vista();
         centre = new Utilitats.JTabbedPanePersonalized();
         barraMenu = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
@@ -232,7 +232,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jLabel6, gridBagConstraints);
 
         escut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        escut.setText("Escudo");
+        escut.setText("Escut");
 
         javax.swing.GroupLayout detaDaltLayout = new javax.swing.GroupLayout(detaDalt);
         detaDalt.setLayout(detaDaltLayout);
@@ -263,7 +263,7 @@ public class Principal extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jScrollPane1);
 
         jScrollPane2.setMinimumSize(new java.awt.Dimension(100, 100));
-        jScrollPane2.setViewportView(calendari);
+        jScrollPane2.setViewportView(calendariNotes);
 
         javax.swing.GroupLayout dretaBaixLayout = new javax.swing.GroupLayout(dretaBaix);
         dretaBaix.setLayout(dretaBaixLayout);
@@ -505,7 +505,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem borrarNadador;
     private javax.swing.JMenuItem borrarParcial;
     private javax.swing.JMenuItem borrarTiempo;
-    private calendari.Vista calendari;
+    private CalendariNotes.Vista calendariNotes;
     private Utilitats.JTabbedPanePersonalized centre;
     private javax.swing.JMenuItem cronoAñadirMultiplesTiempos;
     private javax.swing.JMenuItem cronoAñadirParciales;

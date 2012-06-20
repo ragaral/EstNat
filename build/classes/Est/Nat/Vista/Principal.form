@@ -538,7 +538,7 @@
                         <Component class="javax.swing.JLabel" name="escut">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="Escudo"/>
+                            <Property name="text" type="java.lang.String" value="Escut"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -574,7 +574,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="calendari.Vista" name="calendari">
+                        <Component class="CalendariNotes.Vista" name="calendariNotes">
                         </Component>
                       </SubComponents>
                     </Container>
