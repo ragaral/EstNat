@@ -92,7 +92,7 @@ public class GraficaTempsLineal extends JPanel {
         this.dataset = dataset;
     }
     
-    public void addData(Temps valor, Data nomGrup, String titol){
+    public void setData(Temps valor, Data nomGrup, String titol){
         valors.add(valor);
         nomGrups.add(nomGrup);
         setData(valors, nomGrups, titol);
@@ -149,9 +149,9 @@ public class GraficaTempsLineal extends JPanel {
         GraficaTempsLineal g = new GraficaTempsLineal();
         g.setSize(600, 400);
         //g.setData(valor, nom, "Prova Graf");
-        g.addData(new Temps(0, 0, 0), new Data(27, 04, 2011), "titol");
+        g.setData(new Temps(0, 0, 0), new Data(27, 04, 2011), "titol");
         for (int i = 0; i < valor.length; i++) {
-            g.addData(valor[i], nom[i], "titol");
+            g.setData(valor[i], nom[i], "titol");
         }
         g.createChart("Proba Grafica", "", "mesos", "numeros");
         g.setVisible(true);

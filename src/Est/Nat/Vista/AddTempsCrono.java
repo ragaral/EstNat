@@ -386,12 +386,12 @@ public class AddTempsCrono extends javax.swing.JPanel {
         if (contradorMetres == 0) {
             cronometro1.comensa();
             empezar.setText("Parcial");
-            gl.addData(0, "TiempoActual", "0");
+            gl.setData(0, "TiempoActual", "0");
         } else {
             Temps t = new Temps(cronometro1.toString());
             
             if (contradorMetres == 1) {
-                gl.addData(t.toSegons(), "TiempoActual", "12.0");
+                gl.setData(t.toSegons(), "TiempoActual", "12.0");
             }else {
                 if ((contradorMetres) % 3 == 0) {
                     aux = ((contradorMetres) / 3) * 25;
@@ -400,7 +400,7 @@ public class AddTempsCrono extends javax.swing.JPanel {
                 } else {
                     aux += 10;
                 }
-                gl.addData(t.toSegons(), "TiempoActual", "" + aux);
+                gl.setData(t.toSegons(), "TiempoActual", "" + aux);
             }
             this.temps.add(t);
 //            System.out.println(contradorMetres+" >> "+aux+" - "+t);
@@ -421,7 +421,7 @@ public class AddTempsCrono extends javax.swing.JPanel {
         Temps t = new Temps(cronometro1.toString());
         this.temps.add(t);
         eixidaTemps.removeAll();
-        gl.addData(t.toSegons(), "TiempoActual", fieldMetres.getText()+".0");
+        gl.setData(t.toSegons(), "TiempoActual", fieldMetres.getText()+".0");
         gl.createChart("", "", "Metros", "Tiempo");
         gl.setVisible(true);
         eixidaTemps.add(gl, BorderLayout.CENTER);
@@ -528,16 +528,16 @@ public class AddTempsCrono extends javax.swing.JPanel {
         Prova millorProva = nadAux.getMillorProva(mtrs, comboEstil.getSelectedItem().toString());
         if (millorProva != null) {
             if (millorProva.conteParcials()) {
-                gl.addData(0, "MejorPrueba", "0");
+                gl.setData(0, "MejorPrueba", "0");
                 for (int i = 0; i < millorProva.getParcials().getNumPostes(); i++) {
-                    gl.addData(millorProva.getParcials().getTemps(i).toSegons(), "MejorPrueba", String.valueOf(millorProva.getParcials().getMetres(i)));
+                    gl.setData(millorProva.getParcials().getTemps(i).toSegons(), "MejorPrueba", String.valueOf(millorProva.getParcials().getMetres(i)));
                     this.metres.add(millorProva.getParcials().getMetres(i));
                 }
             } else {
                 //nia q fer aço perq si afegixes 2 valors solts (0 i el final) no es pinten
                 double increment = (millorProva.getTemps().toSegons() / numParcials);
-                gl.addData(0, "MejorPrueba", "0");
-                gl.addData(increment, "MejorPrueba", "12.0");
+                gl.setData(0, "MejorPrueba", "0");
+                gl.setData(increment, "MejorPrueba", "12.0");
                 this.metres.add(12.0);
                 for (int i = 1; i < numParcials; i++) {
                     if ((i + 1) % 3 == 0) {
@@ -547,7 +547,7 @@ public class AddTempsCrono extends javax.swing.JPanel {
                     } else {
                         aux += 10;
                     }
-                    gl.addData((i + 1) * increment, "MejorPrueba", "" + aux);
+                    gl.setData((i + 1) * increment, "MejorPrueba", "" + aux);
                     this.metres.add(aux);
                 }
             }

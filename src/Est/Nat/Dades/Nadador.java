@@ -15,7 +15,6 @@ public class Nadador implements Comparable<Nadador> {
     private Data fetxNaix;
     private String numFitxFed;
     private ArrayList<Prova> proves;
-    private int numProbes;
 
     private String carrer;
     private String poblacio;
@@ -51,7 +50,6 @@ public class Nadador implements Comparable<Nadador> {
         this.correu=correu;
 
         proves = new ArrayList<>();
-        numProbes=0;
 //        initProves();
     }
 
@@ -134,7 +132,7 @@ public class Nadador implements Comparable<Nadador> {
      * @return
      */
     public int getNumProbes(){
-        return numProbes;
+        return proves.size();
     }
 
     /** Torna en una String, la prova num

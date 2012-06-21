@@ -15,8 +15,6 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
- * BUG: si vols q ixquen 2 linees en la mateixa grafica, les segons valors de
- * l'eix X q entren tenen q ser iguals als primers valor introduits.
  *
  * @author Raul
  * @version 1.0 (11/06/11)
@@ -30,7 +28,6 @@ public class GraficaLineal extends JPanel {
         dataset = new DefaultCategoryDataset();
         
         createChart("", "", "", "");
-        setVisible(true);
     }
 
     public GraficaLineal(Number valor[], String nomGrup[], String nomPunt[],
@@ -51,7 +48,7 @@ public class GraficaLineal extends JPanel {
         }
     }
 
-    public void addData(Number valor, String nomGrup, String nomPunt) {
+    public void setData(Number valor, String nomGrup, String nomPunt) {
         dataset.addValue(valor, nomGrup, nomPunt);
     }
 
@@ -111,9 +108,9 @@ public class GraficaLineal extends JPanel {
      * GraficaLineal();
      *
      * //g.setData(valor, nom, "Prova Graf"); for (int i = 0; i < 10; i++) {
-     * g.addData(2, "grup1", ""+i); } g.addData(3, "grup2", "0"); g.addData(3,
-     * "grup2", "2"); g.addData(3, "grup2", "4"); for (int i = 0; i < 3; i++) {
-     * //g.addData(i+3, "grup2", ""+i); } g.createChart("", "", "mesos",
+     * g.setData(2, "grup1", ""+i); } g.setData(3, "grup2", "0"); g.setData(3,
+     * "grup2", "2"); g.setData(3, "grup2", "4"); for (int i = 0; i < 3; i++) {
+     * //g.setData(i+3, "grup2", ""+i); } g.createChart("", "", "mesos",
      * "numeros"); g.setVisible(true); JFrame p = new JFrame(); p.setSize(600,
      * 400); p.setContentPane(g); RefineryUtilities.centerFrameOnScreen(p);
      * p.setVisible(true);

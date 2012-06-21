@@ -456,7 +456,7 @@ public class Principal extends javax.swing.JFrame {
     private void initPropClub(){
         nomClub.setText(club.getNom());
         escut.setText("");
-        escut.setIcon(new ImageIcon("images/"+club.getNom()+".gif"));
+        escut.setIcon(new ImageIcon("src/imatges/"+club.getNom()+".gif"));
     }
     
     private void verListaNadadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verListaNadadoresActionPerformed
