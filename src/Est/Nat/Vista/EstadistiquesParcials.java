@@ -152,6 +152,8 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         initGraficaVelocitat(parcials, estil);
         initGraficaAcceleracio(parcials, estil);
         initGraficaTarta(parcials);
+        
+        repaint();
     }//GEN-LAST:event_fieldDataFocusLost
 
     private void buttonCalendariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendariActionPerformed
@@ -212,11 +214,26 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         acceleracio.createChart("Aceleración", "", "Metros", "Aceleracion(m/s^2)");
     }
     
-    private void initGraficaTarta(Parcials parcial){
-        double pEixida=0.0, pArrivada=0.0, pViratges=0.0, pNado=0.0, tempsTotal=0.0;
+    private void initGraficaTarta(Parcials parcials){
+        Double pEixida = 0.0, pArrivada = 0.0, pViratges = 0.0, pNado = 0.0, tempsTotal = 0.0;
         
-        pEixida = parcial.getMetres(0);
+        tempsTotal = parcials.getTemps(parcials.getNumPostes()-1).toSegons();
+        pEixida = parcials.getTemps(0).toSegons();
+        pArrivada = tempsTotal - parcials.getTemps(parcials.getNumPostes()-2).toSegons();
         
+        for (int i = 3; i < parcials.getNumPostes()-2; i+=3) { // el -2 es per a no contar l'aplagada
+            pViratges += parcials.getTemps(i).toSegons() - parcials.getTemps(i-2).toSegons();
+        }
+        
+        for (int i = 1; i < parcials.getNumPostes()-2; i+=3) { // el -2 es per a no contar l'aplagada
+            pNado += parcials.getTemps(i).toSegons() - parcials.getTemps(i-1).toSegons();
+        }
+        
+        tarta.setData("Salida", (pEixida/tempsTotal)*100);
+        tarta.setData("Virajes", (pViratges/tempsTotal)*100);
+        tarta.setData("Nado", (pNado/tempsTotal)*100);
+        tarta.setData("Llegada", (pArrivada/tempsTotal)*100);
+        tarta.createChart("Resumen");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

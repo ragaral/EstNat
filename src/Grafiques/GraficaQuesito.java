@@ -39,6 +39,10 @@ public class GraficaQuesito extends JPanel{
         }
     }
     
+    public void setData(String nom, Double valors){
+        dataset.setValue(nom, valors);
+    }
+    
     public void createChart(String titol){
         JFreeChart chart = ChartFactory.createPieChart3D(
             titol,

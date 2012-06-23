@@ -28,6 +28,10 @@ public class Temps implements Comparable<Temps>{
             this.c=c;
     }
     
+    /**
+     * 
+     * @param temps segons totals
+     */
     public Temps( double temps ){
         this.m = (int) (temps/60);
         this.s = (int) (temps-(this.m*60));
