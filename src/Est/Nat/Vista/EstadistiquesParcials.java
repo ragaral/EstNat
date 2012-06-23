@@ -151,6 +151,7 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         initGraficaTempsParcial(parcials, estil);
         initGraficaVelocitat(parcials, estil);
         initGraficaAcceleracio(parcials, estil);
+        initGraficaTarta(parcials);
     }//GEN-LAST:event_fieldDataFocusLost
 
     private void buttonCalendariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendariActionPerformed
@@ -199,14 +200,23 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         for(int i = 0; i < parcial.getNumPostes(); i++){
             metres = parcial.getMetres(i) - metresAnterior;
             temps = parcial.getTemps(i).toSegons() - tempsAnterior;
-            aux = (metres/temps)-(metresAnterior/tempsAnterior);
+            //a = (velFinal - velIni)/(tFinal - tIni)
+            double v1 = (metresAnterior/tempsAnterior)==Double.NaN?(metresAnterior/tempsAnterior):0;
+            aux = ((metres/temps) - v1) / (temps - tempsAnterior);
             acceleracio.setData(aux, estil, parcial.getMetres(i)+"");
             
             metresAnterior = parcial.getMetres(i);
             tempsAnterior = parcial.getTemps(i).toSegons();
         }
         
-        acceleracio.createChart("Aceleración", "", "Metros", "Aceleracion(%)");
+        acceleracio.createChart("Aceleración", "", "Metros", "Aceleracion(m/s^2)");
+    }
+    
+    private void initGraficaTarta(Parcials parcial){
+        double pEixida=0.0, pArrivada=0.0, pViratges=0.0, pNado=0.0, tempsTotal=0.0;
+        
+        pEixida = parcial.getMetres(0);
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,10 +7,7 @@ import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -26,8 +23,6 @@ public class GraficaLineal extends JPanel {
     public GraficaLineal() {
         super();
         dataset = new DefaultCategoryDataset();
-        
-        createChart("", "", "", "");
     }
 
     public GraficaLineal(Number valor[], String nomGrup[], String nomPunt[],
@@ -86,15 +81,15 @@ public class GraficaLineal extends JPanel {
         }
 
         // customise the range axis...
-        CategoryPlot plot = (CategoryPlot) chart.getPlot();
-        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        rangeAxis.setAutoRangeIncludesZero(false);
+//        CategoryPlot plot = (CategoryPlot) chart.getPlot();
+//        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+//        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+//        rangeAxis.setAutoRangeIncludesZero(false);
 
-        LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
+//        LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
 //        renderer.setShapesVisible(true);
-        renderer.setDrawOutlines(true);
-        renderer.setUseFillPaint(true);
+//        renderer.setDrawOutlines(true);
+//        renderer.setUseFillPaint(true);
 
 
         //AFEGIM LA GRAFICA AL PANEL
@@ -103,17 +98,29 @@ public class GraficaLineal extends JPanel {
         chartPanel.setSize(this.getSize());
         this.add(chartPanel, BorderLayout.CENTER);
     }
-    /*
-     * public static void main(String args[]){ GraficaLineal g = new
-     * GraficaLineal();
-     *
-     * //g.setData(valor, nom, "Prova Graf"); for (int i = 0; i < 10; i++) {
-     * g.setData(2, "grup1", ""+i); } g.setData(3, "grup2", "0"); g.setData(3,
-     * "grup2", "2"); g.setData(3, "grup2", "4"); for (int i = 0; i < 3; i++) {
-     * //g.setData(i+3, "grup2", ""+i); } g.createChart("", "", "mesos",
-     * "numeros"); g.setVisible(true); JFrame p = new JFrame(); p.setSize(600,
-     * 400); p.setContentPane(g); RefineryUtilities.centerFrameOnScreen(p);
-     * p.setVisible(true);
-     * p.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); }
-     */
+    
+//      public static void main(String args[]){ 
+//          GraficaLineal g = new
+//          GraficaLineal();
+//     
+//          //g.setData(valor, nom, "Prova Graf"); 
+//          for (int i = 0; i < 10; i++) {
+//            g.setData(2, "grup1", ""+i); 
+//          } 
+//          g.setData(3, "grup2", "0"); 
+//          g.setData(3,"grup2", "2"); 
+//          g.setData(3, "grup2", "4"); 
+//          for (int i = 0; i < 3; i++) {
+//            g.setData(i+3, "grup2", ""+i); 
+//          } 
+//          g.createChart("", "", "mesos","numeros"); 
+//          g.setVisible(true); 
+//          javax.swing.JFrame p = new javax.swing.JFrame(); 
+//          p.setSize(600, 400); 
+//          p.setContentPane(g); 
+//          org.jfree.ui.RefineryUtilities.centerFrameOnScreen(p);
+//          p.setVisible(true);
+//          p.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); 
+//      }
+     
 }
