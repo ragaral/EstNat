@@ -4,7 +4,9 @@ import Est.Nat.Dades.*;
 import Utilitats.Calendari;
 import Utilitats.CognomPredictiu;
 import Utilitats.NomPredictiu;
+import java.awt.event.FocusEvent;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,11 +24,21 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         this.setVisible(true);
         
     }
+    
+    public EstadistiquesParcials(Nadador nadador, int metres, String estil, Data data) {
+        this.club = null;
+        initComponents();
+        this.setVisible(true);
+        initGrafiques(nadador, metres, estil, data);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogCalendari = new javax.swing.JDialog();
+        calendari = new Utilitats.Calendari();
+        buttonAceptarCalendari = new javax.swing.JButton();
         spaneContenedor = new javax.swing.JSplitPane();
         spaneEsquerra = new javax.swing.JSplitPane();
         tempsParcials = new Grafiques.GraficaLineal();
@@ -44,6 +56,38 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         comboEstil = new javax.swing.JComboBox();
         fieldData = new javax.swing.JTextField();
         buttonCalendari = new javax.swing.JButton();
+
+        dialogCalendari.setLocationByPlatform(true);
+        dialogCalendari.setMaximumSize(new java.awt.Dimension(320234, 23294));
+        dialogCalendari.setMinimumSize(new java.awt.Dimension(320, 270));
+        dialogCalendari.setModal(true);
+        dialogCalendari.setPreferredSize(new java.awt.Dimension(320, 270));
+        dialogCalendari.setResizable(false);
+
+        buttonAceptarCalendari.setText("Aceptar");
+        buttonAceptarCalendari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAceptarCalendariActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogCalendariLayout = new javax.swing.GroupLayout(dialogCalendari.getContentPane());
+        dialogCalendari.getContentPane().setLayout(dialogCalendariLayout);
+        dialogCalendariLayout.setHorizontalGroup(
+            dialogCalendariLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(calendari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(dialogCalendariLayout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(buttonAceptarCalendari))
+        );
+        dialogCalendariLayout.setVerticalGroup(
+            dialogCalendariLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCalendariLayout.createSequentialGroup()
+                .addComponent(calendari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonAceptarCalendari)
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
 
         spaneContenedor.setDividerLocation(350);
         spaneContenedor.setResizeWeight(0.5);
@@ -145,29 +189,37 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
         Data data = new Data(fieldData.getText());
         Nadador nad = club.buscaNadador(nomPredictiu.getSelectedItem().toString(), cognomPredictiu.getSelectedItem().toString());
         nad.initProves();
-        Prova prova = nad.buscaProva(metres, estil, data);
-        Parcials parcials = prova.getParcials();
-        
-        initGraficaTempsParcial(parcials, estil);
-        initGraficaVelocitat(parcials, estil);
-        initGraficaAcceleracio(parcials, estil);
-        initGraficaTarta(parcials);
-        
-        repaint();
+
+        initGrafiques(nad, metres, estil, data);
     }//GEN-LAST:event_fieldDataFocusLost
 
     private void buttonCalendariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendariActionPerformed
-        Calendari calendari = new Calendari();
-        JDialog dialogCalendari = new JDialog();
-        dialogCalendari.setModal(true);
-        dialogCalendari.add(calendari);
-        dialogCalendari.setSize(350, 200);
-        dialogCalendari.setLocationRelativeTo(null);
         dialogCalendari.setVisible(true);
-        
         fieldData.setText(calendari.toString());
+        fieldData.requestFocus();
+        fieldDataFocusLost(new FocusEvent(dialogCalendari, 0));
     }//GEN-LAST:event_buttonCalendariActionPerformed
 
+    private void buttonAceptarCalendariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarCalendariActionPerformed
+        dialogCalendari.dispose();
+    }//GEN-LAST:event_buttonAceptarCalendariActionPerformed
+
+    private void initGrafiques(Nadador nad, int metres, String estil, Data data){
+        try{
+            Prova prova = nad.buscaProva(metres, estil, data);
+            Parcials parcials = prova.getParcials();
+
+            initGraficaTempsParcial(parcials, estil);
+            initGraficaVelocitat(parcials, estil);
+            initGraficaAcceleracio(parcials, estil);
+            initGraficaTarta(parcials);
+
+            repaint();
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "No hay parciales en ese dia" );
+        }
+    }
+    
     private void initGraficaTempsParcial(Parcials parcial, String estil) {
         for(int i = 0; i < parcial.getNumPostes(); i++){
             tempsParcials.setData(parcial.getTemps(i).toSegons(), estil, parcial.getMetres(i)+"");
@@ -238,10 +290,13 @@ public class EstadistiquesParcials extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Grafiques.GraficaLineal acceleracio;
+    private javax.swing.JButton buttonAceptarCalendari;
     private javax.swing.JButton buttonCalendari;
+    private Utilitats.Calendari calendari;
     private Utilitats.CognomPredictiu cognomPredictiu;
     private javax.swing.JComboBox comboEstil;
     private javax.swing.JComboBox comboMetres;
+    private javax.swing.JDialog dialogCalendari;
     private javax.swing.JTextField fieldData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
