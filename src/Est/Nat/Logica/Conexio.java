@@ -22,10 +22,6 @@ public class Conexio {
      * Crea un objecte que conCecta amb el server i taule perdefecte
      */
     public Conexio() throws noHayInternet{
-        /*this.server = "db4free.net";
-        this.bd = "bdraul";
-        this.user = "raulalkla";
-        this.pass = "42954295";*/
         
         this.server = "localhost";
         this.bd = "natacio";
